@@ -20,8 +20,8 @@ import java.nio.file.StandardCopyOption;
  * @data 2025/4/10 16:38
  * @version 1.0
  */
-public class StaticGenerate {
-    public static void main(String[] args) throws TemplateException, IOException {
+public class MainGenerate {
+    public static void doGenerate(Object model) throws TemplateException, IOException {
         // 获取整个项目的根路径
         String projectPath = System.getProperty("user.dir");
         File parentFile = new File(projectPath).getParentFile();
@@ -29,19 +29,26 @@ public class StaticGenerate {
         String inputPath = new File(parentFile, "code-generate-demo/acm-template").getAbsolutePath();
         // 输出路径：直接输出到项目的根目录
         String outputPath = projectPath;
+        //静态文件
         copyFilesByHutool(inputPath, outputPath);
-
-         inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
-         outputPath = projectPath + File.separator + "acm-template/src/main/java/com/mi/acm/MainTemplate.java";
+        //动态文件
+        inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
+        outputPath = projectPath + File.separator + "acm-template/src/main/java/com/mi/acm/MainTemplate.java";
         MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
         mainTemplateConfig.setAuthor("睿智");
         mainTemplateConfig.setLoop(false);
         mainTemplateConfig.setOutputText("求和结果：");
-        doDynamicGenerate(inputPath, outputPath, mainTemplateConfig);
+        doDynamicGenerate(inputPath, outputPath, model);
     }
 
-
-
+    /**
+     * 动态生成文件（FreeMarker 实现）
+     * @param inputPath 模板文件路径
+     * @param outputPath 输出文件路径
+     * @param model 数据模型
+     * @throws IOException
+     * @throws TemplateException
+     */
     public static void doDynamicGenerate(String inputPath, String outputPath, Object model) throws IOException, TemplateException {
         // new 出 Configuration 对象，参数为 FreeMarker 版本号
         Configuration configuration = new Configuration(Configuration.VERSION_2_3_32);
