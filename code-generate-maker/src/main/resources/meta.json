@@ -1,0 +1,46 @@
+{
+  "name": "acm-template-pro-generator",
+  "description": "ACM 示例模板生成器",
+  "basePackage": "com.mi",
+  "version": "1.0",
+  "author": "睿智",
+  "createTime": "2025-04-22",
+  "fileConfig": {
+    "inputRootPath": "F:/work/starCode/code-generate/code-generate-demo/acm-template",
+    "outputRootPath": "generate",
+    "type": "dir",
+    "fileInfo": [
+      {
+        "inputPath": "src/main/java/com/mi/acm/MainTemplate.java.ftl",
+        "outputPath": "src/main/java/com/mi/acm/MainTemplate.java",
+        "type": "file",
+        "generateType": "dynamic"
+      }
+    ]
+  },
+  "modelConfig": {
+    "modelInfo": [
+      {
+        "fieldName": "loop",
+        "type": "boolean",
+        "description": "是否生成循环",
+        "defaultValue": false,
+        "abbr": "l"
+      },
+      {
+        "fieldName": "author",
+        "type": "String",
+        "description": "作者注释",
+        "defaultValue": "mi",
+        "abbr": "a"
+      },
+      {
+        "fieldName": "outputText",
+        "type": "String",
+        "description": "输出信息",
+        "defaultValue": "sum = ",
+        "abbr": "o"
+      }
+    ]
+  }
+}

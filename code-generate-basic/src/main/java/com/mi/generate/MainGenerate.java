@@ -2,7 +2,6 @@ package com.mi.generate;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.ArrayUtil;
-import com.mi.config.MainTemplateConfig;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -22,22 +21,17 @@ import java.nio.file.StandardCopyOption;
  */
 public class MainGenerate {
     public static void doGenerate(Object model) throws TemplateException, IOException {
-        // 获取整个项目的根路径
-        String projectPath = System.getProperty("user.dir");
-        File parentFile = new File(projectPath).getParentFile();
-        // 输入路径：ACM 示例代码模板目录
-        String inputPath = new File(parentFile, "code-generate-demo/acm-template").getAbsolutePath();
-        // 输出路径：直接输出到项目的根目录
-        String outputPath = projectPath;
-        //静态文件
-        copyFilesByHutool(inputPath, outputPath);
-        //动态文件
-        inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
-        outputPath = projectPath + File.separator + "acm-template/src/main/java/com/mi/acm/MainTemplate.java";
-        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        mainTemplateConfig.setAuthor("睿智");
-        mainTemplateConfig.setLoop(false);
-        mainTemplateConfig.setOutputText("求和结果：");
+
+
+
+        String inputRootPath = "F:/work//starCode/code-generate/code-generate-basic";
+        String outputRootPath = "F:/work/starCode/code-generate/code-generate-basic/acm-template";
+
+        String inputPath;
+        String outputPath;
+
+        inputPath = new File(inputRootPath,"/src//main/resources/templates/MainTemplate.java.ftl").getAbsolutePath();
+        outputPath = new File(outputRootPath,"src/main/java/com/mi/acm/MainTemplate.java").getAbsolutePath();
         doDynamicGenerate(inputPath, outputPath, model);
     }
 

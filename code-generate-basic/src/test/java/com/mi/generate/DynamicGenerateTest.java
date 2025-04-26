@@ -25,7 +25,19 @@ import java.util.Map;
 public class DynamicGenerateTest {
 
     public static void main(String[] args) throws IOException, TemplateException {
+        int random = (int) (Math.random() * 50)+1 ;
+        System.out.println(random);
+        for (int i = 15; i <= 98; i++) {
+            String key = i > 9 ? String.valueOf(i) : "0" + i;
+            for (int j = 1;  true; j++) {
+               String keys = key +( j > 9 ? String.valueOf(j) : "0"+ j);
+                System.out.println(keys);
+                if(j == 10){
+                    break;
+                }
 
+            }
+        }
     }
 
 
