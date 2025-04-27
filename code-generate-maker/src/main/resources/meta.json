@@ -6,8 +6,9 @@
   "author": "睿智",
   "createTime": "2025-04-22",
   "fileConfig": {
-    "inputRootPath": "F:/work/starCode/code-generate/code-generate-demo/acm-template",
+    "inputRootPath": ".source/acm-template",
     "outputRootPath": "generate",
+    "sourceRootPath": "F:/work/starCode/code-generate/code-generate-demo/acm-template",
     "type": "dir",
     "fileInfo": [
       {

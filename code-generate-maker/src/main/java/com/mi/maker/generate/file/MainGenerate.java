@@ -38,6 +38,12 @@ public class MainGenerate {
 
         //生成文件
 
+        //.source/acm-temple
+        String sourceRootPath = metaObj.getFileConfig().getSourceRootPath();
+        String sourceCopyPath = outputPath + File.separator + ".source";
+        FileUtil.copy(sourceRootPath, sourceCopyPath, false);
+
+        // model.DataModel
         String inputFilePath = inputResourcePath + File.separator + "templates" + File.separator + "java" + File.separator + "model" + File.separator + "DataModel.java.ftl";
         String outputFilePath = outputBaseJavaPath + File.separator + "model" + File.separator + "DataModel.java";
         DynamicFileGenerate.doDynamicGenerate(inputFilePath, outputFilePath, metaObj);
